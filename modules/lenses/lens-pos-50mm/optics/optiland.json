@@ -1,0 +1,98 @@
+{
+  "_metadata": {
+    "generator": "openuc2-optikit",
+    "generator_version": "1.0.0",
+    "optiland_version": ">=0.5.0",
+    "uuid": "opt-a1b2c3d4-lens-pcx-50mm",
+    "module_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Thorlabs LA1131-A plano-convex singlet lens, f=50mm, Ø25.4mm, N-BK7",
+    "repo": "https://github.com/openuc2/openuc2-optiland-models",
+    "created": "2026-03-10",
+    "author": "openUC2 Team"
+  },
+
+  "surfaces": [
+    {
+      "index": 0,
+      "comment": "Object surface (at infinity for collimated input)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": "Infinity",
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 12.7
+    },
+    {
+      "index": 1,
+      "comment": "Convex surface of plano-convex lens (light enters here)",
+      "type": "standard",
+      "radius": 25.8,
+      "thickness": 5.3,
+      "material": {
+        "name": "N-BK7",
+        "catalog": "schott",
+        "refractive_index_d": 1.5168,
+        "abbe_number": 64.17
+      },
+      "is_stop": true,
+      "semi_aperture": 12.7,
+      "coating": {
+        "type": "AR-A",
+        "wavelength_range_nm": [350, 700],
+        "avg_reflectance_pct": 0.5
+      }
+    },
+    {
+      "index": 2,
+      "comment": "Plano (flat) surface of lens — light exits here",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": 44.7,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 12.7,
+      "coating": {
+        "type": "AR-A",
+        "wavelength_range_nm": [350, 700],
+        "avg_reflectance_pct": 0.5
+      }
+    },
+    {
+      "index": 3,
+      "comment": "Image surface (at back focal point for collimated input)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": null,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 0.0
+    }
+  ],
+
+  "aperture": {
+    "type": "EPD",
+    "value": 25.4
+  },
+
+  "fields": {
+    "type": "angle",
+    "values": [
+      {"y": 0.0, "x": 0.0, "weight": 1.0}
+    ]
+  },
+
+  "wavelengths": [
+    {"value_um": 0.4861, "weight": 1.0, "is_primary": false, "label": "F-line"},
+    {"value_um": 0.5876, "weight": 1.0, "is_primary": true, "label": "d-line"},
+    {"value_um": 0.6563, "weight": 1.0, "is_primary": false, "label": "C-line"}
+  ],
+
+  "notes": {
+    "design_wavelength_nm": 632.8,
+    "vendor": "Thorlabs",
+    "sku": "LA1131-A",
+    "focal_length_mm": 50.0,
+    "back_focal_length_mm": 47.3,
+    "surface_quality_scratch_dig": "40-20"
+  }
+}

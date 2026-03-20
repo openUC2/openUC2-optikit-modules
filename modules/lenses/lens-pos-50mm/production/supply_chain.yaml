@@ -1,0 +1,47 @@
+# =============================================================================
+# supply_chain.yaml — Supply chain and pricing for lens-pos-1x1
+# =============================================================================
+
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+# External procurement
+external_parts:
+  - part_id: "thorlabs-LA1131-A"
+    name: "N-BK7 Plano-Convex Lens, Ø1\", f=50mm, AR 350-700nm"
+    vendor: "Thorlabs"
+    sku: "LA1131-A"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=LA1131-A"
+    price_eur: 28.00
+    currency: EUR
+    lead_time_days: 1
+    moq: 1                             # Minimum order quantity
+    availability: "Stock"
+    alternative_vendors:
+      - vendor: "Edmund Optics"
+        sku: "#45-504"                 # Example — verify exact match
+        notes: "Similar spec, different coating designation"
+      - vendor: "Newport"
+        sku: "KPX094AR.14"
+        notes: "Check coating compatibility"
+
+# Internal production
+internal_parts:
+  - part_id: "uc2-cube-v4"
+    production_method: "injection molding"
+    cost_eur: 2.50
+    notes: "Shared across all 1x1 modules"
+  - part_id: "insert-lens-25mm"
+    production_method: "3D printing (FDM)"
+    cost_eur: 0.30
+    material_cost_eur: 0.10
+    print_time_min: 25
+
+# Total cost breakdown
+cost_summary:
+  external_parts_eur: 28.00
+  internal_parts_eur: 2.80
+  assembly_labor_min: 5
+  assembly_cost_eur: 2.50             # At €30/hr
+  total_cost_eur: 33.30
+  selling_price_eur: 100.00           # Configured in module.yaml
+  margin_pct: 67

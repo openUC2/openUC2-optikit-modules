@@ -1,0 +1,26 @@
+{
+  "_comment": "This module is a passive optical element with no active control. This config snippet is provided for completeness and metadata tracking. ImSwitch uses this to know the module exists in the setup but does not create any controller for it.",
+  "_module_uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "_module_id": "lens-pos-1x1",
+
+  "passiveElements": {
+    "LensPositive_f50": {
+      "type": "PassiveOptic",
+      "properties": {
+        "category": "lens",
+        "focalLength_mm": 50.0,
+        "diameter_mm": 25.4,
+        "material": "N-BK7",
+        "coating": "AR-A",
+        "vendor": "Thorlabs",
+        "sku": "LA1131-A"
+      },
+      "position": {
+        "grid_x": null,
+        "grid_y": null,
+        "grid_z": null,
+        "dz_offset_mm": 0.0
+      }
+    }
+  }
+}

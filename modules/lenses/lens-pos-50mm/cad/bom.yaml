@@ -1,0 +1,41 @@
+# =============================================================================
+# bom.yaml — Bill of Materials for lens-pos-1x1
+# =============================================================================
+# Derived from the Inventor assembly. Linked to the parts database.
+# =============================================================================
+
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+generated_from: "ASS - 2021 - CUBLEND40F50 - V04.iam"
+generated_date: "2026-03-10"
+
+items:
+  - part_id: "uc2-cube-v4"
+    name: "UC2 Cube v4 (injection molded)"
+    quantity: 1
+    source: in-house
+    material: "ABS (IM) / PLA (3DP)"
+    estimated_cost_eur: 2.50
+    notes: "Standard cube, shared across all 1x1 modules"
+
+  - part_id: "insert-lens-25mm"
+    name: "Lens insert for Ø25.4mm optics"
+    quantity: 1
+    source: in-house
+    material: "PLA (3D printed)"
+    estimated_cost_eur: 0.30
+    print_time_min: 25
+    stl_file: "cad/exports/insert-lens-25mm.stl"
+    notes: "Parametric — generated from templates/lens/"
+
+  - part_id: "thorlabs-LA1131-A"
+    name: "N-BK7 Plano-Convex Lens, Ø1\", f=50mm, AR 350-700nm"
+    quantity: 1
+    source: external
+    vendor: "Thorlabs"
+    sku: "LA1131-A"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=LA1131-A"
+    estimated_cost_eur: 28.00
+    lead_time_days: 1
+    notes: "Stock item, ships same day"
+
+total_estimated_cost_eur: 30.80

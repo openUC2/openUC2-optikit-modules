@@ -1,0 +1,36 @@
+name: Validate Module
+
+on:
+  pull_request:
+    paths:
+      - 'modules/**'
+      - 'templates/**'
+      - 'schemas/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install jsonschema pyyaml trimesh
+
+      - name: Validate changed modules
+        run: |
+          python scripts/validate_module.py --changed
+
+      - name: Generate missing GLB previews
+        run: |
+          python scripts/generate_glb_preview.py --if-missing || true
+        continue-on-error: true

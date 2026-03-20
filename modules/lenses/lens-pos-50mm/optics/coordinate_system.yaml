@@ -1,0 +1,43 @@
+# =============================================================================
+# coordinate_system.yaml — Optical coordinate system for lens-pos-1x1
+# =============================================================================
+# Defines the CSYS_OPT frame used by Optiland for this module.
+# The transform from CSYS_CAD to CSYS_OPT is defined here.
+# =============================================================================
+
+uuid: "opt-a1b2c3d4-lens-pcx-50mm"
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+# Optical coordinate system (CSYS_OPT)
+# Origin: center of the first optical surface (convex face of the lens)
+# Z-axis: along optical axis, pointing in the direction of light propagation
+# Y-axis: vertical (up)
+# X-axis: completes right-handed system
+csys_opt:
+  description: >
+    Origin at the vertex of the convex surface.
+    Z points along the optical axis in the direction of light propagation
+    (from convex surface through lens body toward plano surface).
+  origin_in_cube_mm: [25.0, 25.0, 25.0]  # Cube center (lens centered in cube)
+  axes:
+    x: [0, 1, 0]    # Horizontal in cube (cube +Y)
+    y: [0, 0, 1]    # Vertical in cube (cube +Z = up)
+    z: [1, 0, 0]    # Along optical axis (cube +X = light direction)
+
+# Transform from cube coordinate system (CSYS_CAD) to optical (CSYS_OPT)
+# CSYS_CAD origin is at cube geometric center [25, 25, 25] mm from corner
+# This 4x4 homogeneous matrix converts CAD coords to optical coords
+transform_cad_to_opt:
+  # Rotation: permute axes (CAD +X -> OPT +Z, CAD +Y -> OPT +X, CAD +Z -> OPT +Y)
+  # Translation: zero (both origins at cube center)
+  matrix_4x4:
+    - [0, 1, 0, 0]
+    - [0, 0, 1, 0]
+    - [1, 0, 0, 0]
+    - [0, 0, 0, 1]
+
+# Beam path reference points (in CSYS_OPT, relative to origin)
+beam_path:
+  entry_point_mm: [0.0, 0.0, 0.0]           # At convex surface vertex
+  exit_point_mm: [0.0, 0.0, 5.3]            # At plano surface (center thickness away)
+  nominal_focal_point_mm: [0.0, 0.0, 50.0]  # At paraxial focus (from convex vertex)

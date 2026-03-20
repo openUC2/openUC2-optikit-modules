@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openuc2.github.io/schemas/module.schema.json",
+  "title": "UC2 Module Descriptor",
+  "description": "Schema for validating module.yaml files in the openUC2 module repository",
+  "type": "object",
+  "required": ["id", "uuid", "name", "version", "category", "scenario", "group", "grid_size", "color", "metadata", "parameters", "ports", "optics", "cad"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "URL-safe module identifier"
+    },
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$",
+      "description": "Globally unique identifier (UUID v4)"
+    },
+    "name": { "type": "string" },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["lens", "mirror", "filter", "detector", "light-source", "objective", "stage", "electronics", "sample", "custom"]
+    },
+    "scenario": {
+      "type": "integer",
+      "enum": [1, 2, 3]
+    },
+    "group": { "type": "string" },
+    "grid_size": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#[0-9A-Fa-f]{6}$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["author", "date"],
+      "properties": {
+        "author": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "vendor": { "type": "string" },
+        "sku": { "type": "string" },
+        "etag": { "type": "string" },
+        "license": { "type": "string" },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "static": { "type": "object" },
+        "variable": { "type": "object" }
+      }
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "face", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "face": {
+            "type": "string",
+            "enum": ["+X", "-X", "+Y", "-Y", "+Z", "-Z"]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["optical", "mechanical", "electronic", "fluid"]
+          },
+          "beam_height_mm": { "type": "number" }
+        }
+      }
+    },
+    "optics": {
+      "type": "object",
+      "properties": {
+        "optiland_file": { "type": "string" },
+        "optiland_ref": {
+          "type": "object",
+          "properties": {
+            "repo": { "type": "string", "format": "uri" },
+            "uuid": { "type": "string" },
+            "commit": { "type": ["string", "null"] }
+          }
+        }
+      }
+    },
+    "cad": {
+      "type": "object",
+      "properties": {
+        "inventor_assembly": { "type": "string" },
+        "inventor_ref": {
+          "type": "object",
+          "properties": {
+            "repo": { "type": "string", "format": "uri" },
+            "uuid": { "type": "string" }
+          }
+        },
+        "exports": {
+          "type": "object",
+          "properties": {
+            "step": { "type": "string" },
+            "stl": { "type": "string" },
+            "glb": { "type": "string" }
+          }
+        },
+        "bom": { "type": "string" }
+      }
+    },
+    "electronics": {
+      "type": "object",
+      "required": ["has_electronics"]
+    },
+    "firmware": {
+      "type": "object",
+      "required": ["has_firmware"]
+    },
+    "software": { "type": "object" },
+    "configurator": { "type": "object" },
+    "production": { "type": "object" }
+  }
+}

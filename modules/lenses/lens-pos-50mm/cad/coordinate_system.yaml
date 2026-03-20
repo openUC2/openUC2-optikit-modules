@@ -1,0 +1,44 @@
+# =============================================================================
+# coordinate_system.yaml — CAD coordinate system for lens-pos-1x1
+# =============================================================================
+# Defines CSYS_CAD and its relationship to the optical coordinate system.
+# This is the bridge between Inventor and Optiland.
+# =============================================================================
+
+uuid: "cad-a1b2c3d4-lens-pcx-50mm"
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+# CAD coordinate system (CSYS_CAD)
+# Defined in the Inventor assembly
+csys_cad:
+  description: >
+    Origin at the geometric center of the UC2 cube.
+    Axes aligned with cube faces.
+  origin_from_corner_mm: [25.0, 25.0, 25.0]  # Center of 50mm cube
+  axes:
+    x: "Along optical axis (through ±X faces)"
+    y: "Horizontal (through ±Y faces)"
+    z: "Vertical / up (through ±Z faces)"
+
+# Named reference frames in the Inventor assembly
+inventor_csys:
+  - name: "CSYS_CUBE_CENTER"
+    description: "Geometric center of the cube"
+    origin_mm: [25.0, 25.0, 25.0]
+  - name: "CSYS_LENS_SEAT"
+    description: "Center of the lens retention seat in the insert"
+    origin_mm: [25.0, 25.0, 25.0]  # Coincident with cube center for this module
+  - name: "CSYS_OPTICAL_AXIS"
+    description: "On the optical axis at the convex surface vertex"
+    origin_mm: [25.0, 25.0, 25.0]  # Same as cube center (lens centered)
+
+# Transform to optical coordinate system
+# See optics/coordinate_system.yaml for the full definition
+transform_to_optical: "../optics/coordinate_system.yaml"
+
+# Inventor assembly reference
+inventor_file: "ASS - 2021 - CUBLEND40F50 - V04.iam"
+inventor_repo:
+  url: "https://github.com/openuc2/openuc2-cad-modules"
+  uuid: "cad-a1b2c3d4-lens-pcx-50mm"
+  path: "modules/lens-pos-1x1/"

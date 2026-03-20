@@ -1,0 +1,52 @@
+name: Build Configurator Index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'modules/**'
+      - 'templates/**'
+      - 'scripts/build_configurator_index.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Build configurator index
+        run: python scripts/build_configurator_index.py
+
+      - name: Copy assets to configurator/
+        run: |
+          # Copy icons
+          for dir in modules/*/configurator; do
+            module_id=$(basename $(dirname "$dir"))
+            if [ -f "$dir/icon.svg" ]; then
+              cp "$dir/icon.svg" "configurator/icons/${module_id}.svg"
+            fi
+          done
+          # Copy GLB files
+          for dir in modules/*/cad/exports; do
+            module_id=$(basename $(dirname $(dirname "$dir")))
+            if [ -f "$dir/model.glb" ]; then
+              cp "$dir/model.glb" "configurator/cad/${module_id}.glb"
+            fi
+          done
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add configurator/
+          git diff --cached --quiet || git commit -m "chore: rebuild configurator index"
+          git push

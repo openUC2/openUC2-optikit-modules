@@ -1,0 +1,47 @@
+# =============================================================================
+# printing.yaml — 3D printing settings for lens-pos-1x1 insert
+# =============================================================================
+
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+
+parts_to_print:
+  - name: "Lens insert for Ø25.4mm"
+    stl_file: "cad/exports/insert-lens-25mm.stl"
+    quantity: 1
+
+    recommended_settings:
+      printer_type: FDM
+      material: PLA
+      nozzle_diameter_mm: 0.4
+      layer_height_mm: 0.2
+      infill_percent: 80
+      infill_pattern: grid
+      wall_count: 3
+      top_layers: 4
+      bottom_layers: 4
+      supports: false
+      orientation: "Standing (optical axis vertical)"
+      print_time_min: 25
+      material_usage_g: 4.5
+
+    alternative_settings:
+      - name: "High quality (SLA)"
+        printer_type: SLA
+        material: "Standard resin (black)"
+        layer_height_mm: 0.05
+        notes: "Better dimensional accuracy for tight lens fit"
+
+    critical_dimensions:
+      - feature: "Lens seat inner diameter"
+        nominal_mm: 25.5
+        tolerance_mm: 0.1
+        notes: "Must provide light friction fit for Ø25.4mm lens"
+      - feature: "Outer dimensions"
+        nominal_mm: 47.0
+        tolerance_mm: 0.2
+        notes: "Must slide into UC2 cube channel"
+
+    post_processing:
+      - "Remove any stringing from lens seat"
+      - "Test-fit lens before assembly"
+      - "File down any imperfections on sliding surfaces"

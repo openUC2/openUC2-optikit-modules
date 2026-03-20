@@ -1,0 +1,60 @@
+name: Batch Import from Vendor Catalog
+
+on:
+  workflow_dispatch:
+    inputs:
+      category:
+        description: 'Module category (lens, mirror, filter, ...)'
+        required: true
+        default: 'lens'
+      catalog_file:
+        description: 'Path to vendor CSV (e.g., vendor-catalogs/thorlabs/planoconvex.csv)'
+        required: true
+  push:
+    paths:
+      - 'vendor-catalogs/**/*.csv'
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      - name: Run batch import
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python scripts/generate_from_template.py \
+              --category ${{ github.event.inputs.category }} \
+              --id auto \
+              --from-csv ${{ github.event.inputs.catalog_file }}
+          else
+            # Auto-detect changed CSV files
+            for csv in $(git diff --name-only HEAD~1 -- 'vendor-catalogs/**/*.csv'); do
+              category=$(basename $(dirname "$csv"))
+              echo "Importing from: $csv (category: $category)"
+              python scripts/generate_from_template.py \
+                --category "$category" \
+                --id auto \
+                --from-csv "$csv"
+            done
+          fi
+
+      - name: Validate generated modules
+        run: python scripts/validate_module.py --changed || true
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "feat: batch import from vendor catalog"
+          body: "Auto-generated modules from vendor catalog CSV. Please review."
+          branch: batch-import/${{ github.run_id }}
+          commit-message: "feat: batch import modules from vendor catalog"

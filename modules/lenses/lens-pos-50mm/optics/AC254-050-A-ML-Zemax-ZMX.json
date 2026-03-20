@@ -1,0 +1,177 @@
+{
+    "version": 1.0,
+    "aperture": {
+        "type": "EPD",
+        "value": 22.86,
+        "object_space_telecentric": false
+    },
+    "fields": {
+        "fields": [
+            {
+                "x": 0.0,
+                "y": 0.0,
+                "vx": 0.0,
+                "vy": 0.0
+            }
+        ],
+        "telecentric": false,
+        "field_definition": {
+            "field_type": "AngleField"
+        },
+        "object_space_telecentric": false
+    },
+    "wavelengths": {
+        "wavelengths": [
+            {
+                "value": 0.4861,
+                "is_primary": false,
+                "unit": "um",
+                "weight": 1.0
+            },
+            {
+                "value": 0.5876,
+                "is_primary": true,
+                "unit": "um",
+                "weight": 1.0
+            },
+            {
+                "value": 0.6563,
+                "is_primary": false,
+                "unit": "um",
+                "weight": 1.0
+            }
+        ],
+        "polarization": "ignore"
+    },
+    "apodization": null,
+    "pickups": [],
+    "solves": {
+        "solves": []
+    },
+    "surface_group": {
+        "surfaces": [
+            {
+                "type": "Surface",
+                "thickness": 9.0,
+                "geometry": {
+                    "type": "StandardGeometry",
+                    "cs": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0,
+                        "rx": 0.0,
+                        "ry": 0.0,
+                        "rz": 0.0,
+                        "reference_cs": null
+                    },
+                    "radius": 33.34000000000005,
+                    "conic": 0.0
+                },
+                "material_post": {
+                    "type": "Material",
+                    "propagation_model": {
+                        "class": "HomogeneousPropagation"
+                    },
+                    "filename": "C:\\localfiles\\LLM_Optics\\optiland\\optiland\\database\\data-nk\\glass\\schott\\N-BAF10.yml",
+                    "name": "N-BAF10",
+                    "reference": null,
+                    "robust_search": true,
+                    "min_wavelength": null,
+                    "max_wavelength": null
+                },
+                "is_stop": true,
+                "aperture": {
+                    "type": "RadialAperture",
+                    "r_max": 6.35,
+                    "r_min": 0
+                },
+                "interaction_model": {
+                    "type": "RefractiveReflectiveModel",
+                    "is_reflective": false,
+                    "coating": null,
+                    "bsdf": null
+                }
+            },
+            {
+                "type": "Surface",
+                "thickness": 2.5,
+                "geometry": {
+                    "type": "StandardGeometry",
+                    "cs": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 9.0,
+                        "rx": 0.0,
+                        "ry": 0.0,
+                        "rz": 0.0,
+                        "reference_cs": null
+                    },
+                    "radius": -22.27999999999998,
+                    "conic": 0.0
+                },
+                "material_post": {
+                    "type": "Material",
+                    "propagation_model": {
+                        "class": "HomogeneousPropagation"
+                    },
+                    "filename": "C:\\localfiles\\LLM_Optics\\optiland\\optiland\\database\\data-nk\\glass\\schott\\N-SF10.yml",
+                    "name": "SF10",
+                    "reference": null,
+                    "robust_search": true,
+                    "min_wavelength": null,
+                    "max_wavelength": null
+                },
+                "is_stop": false,
+                "aperture": {
+                    "type": "RadialAperture",
+                    "r_max": 6.35,
+                    "r_min": 0
+                },
+                "interaction_model": {
+                    "type": "RefractiveReflectiveModel",
+                    "is_reflective": false,
+                    "coating": null,
+                    "bsdf": null
+                }
+            },
+            {
+                "type": "Surface",
+                "thickness": 43.22018758686,
+                "geometry": {
+                    "type": "StandardGeometry",
+                    "cs": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 11.5,
+                        "rx": 0.0,
+                        "ry": 0.0,
+                        "rz": 0.0,
+                        "reference_cs": null
+                    },
+                    "radius": -291.07000000000244,
+                    "conic": 0.0
+                },
+                "material_post": {
+                    "type": "IdealMaterial",
+                    "propagation_model": {
+                        "class": "HomogeneousPropagation"
+                    },
+                    "index": 1.0,
+                    "absorp": 0.0
+                },
+                "is_stop": false,
+                "aperture": {
+                    "type": "RadialAperture",
+                    "r_max": 6.35,
+                    "r_min": 0
+                },
+                "interaction_model": {
+                    "type": "RefractiveReflectiveModel",
+                    "is_reflective": false,
+                    "coating": null,
+                    "bsdf": null
+                }
+            }
+        ]
+    }
+}

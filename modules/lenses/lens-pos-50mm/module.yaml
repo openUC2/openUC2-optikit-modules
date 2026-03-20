@@ -1,0 +1,146 @@
+# =============================================================================
+# module.yaml — Master descriptor for UC2 module: Positive Lens (1x1)
+# =============================================================================
+# This file is the single source of truth for this module.
+# All paths are relative to this file's directory.
+# External references use UUIDs pointing to canonical repos.
+# =============================================================================
+
+# --- Identity ---
+id: lens-pos-1x1
+uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890   # Globally unique, never changes
+name: "Lens (positive)"
+version: 1.0.0
+category: lens          # lens | mirror | filter | detector | light-source
+                        # | objective | stage | electronics | sample | custom
+scenario: 2             # 1=handcrafted, 2=generic/template, 3=external
+group: lenses           # Configurator sidebar grouping
+grid_size: [1, 1]       # Width x Height in UC2 grid units (50mm each)
+color: "#7CC142"
+
+# --- Metadata ---
+metadata:
+  author: "openUC2 Team"
+  date: "2026-03-10"
+  license: "CERN-OHL-S-2.0"
+  base_module: "UC2 Cube v4"
+  vendor: "Thorlabs"
+  sku: "LA1131-A"
+  etag: "v4-2026Q1"                     # Hardware revision tag
+  url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=LA1131-A"
+  tags:
+    - plano-convex
+    - N-BK7
+    - 1-inch
+    - AR-coated
+
+# --- Parameters ---
+parameters:
+  static:                               # Fixed at manufacturing / purchase time
+    focalLength_mm: 50.0
+    diameter_mm: 25.4
+    material: "N-BK7"
+    coating: "AR-A"                     # 350-700 nm broadband AR
+    coating_reflectance_avg_pct: 0.5
+    curvature_r1_mm: .inf              # Plano side (flat)
+    curvature_r2_mm: -25.8             # Convex side (sign convention: center of curvature to left)
+    center_thickness_mm: 5.3
+    edge_thickness_mm: 2.0
+    clear_aperture_mm: 22.86           # 90% of diameter
+    design_wavelength_nm: 632.8
+    abbe_number: 64.17
+    surface_quality: "40-20"           # Scratch-dig
+    surface_flatness_plano: "lambda/4"
+    surface_power_convex: "3 fringes"
+    mass_g: 11.0
+    tolerance_focal_length_pct: 1.0
+
+  variable:                             # Adjustable in the assembled system
+    dz_mm:                              # Shift along optical axis within cube
+      default: 0.0
+      min: -2.0
+      max: 2.0
+      step: 0.1
+      unit: "mm"
+      description: "Axial position offset of lens within cube insert"
+
+# --- Ports ---
+# Define how light enters/exits this module on the UC2 grid
+ports:
+  - id: port-optical-in
+    face: "+X"                          # Cube face identifier
+    type: optical
+    beam_height_mm: 25.0               # Height from cube bottom face
+    beam_center_offset_mm: [0.0, 0.0]  # [horizontal, vertical] from face center
+    accepts: [collimated, diverging, converging]
+
+  - id: port-optical-out
+    face: "-X"
+    type: optical
+    beam_height_mm: 25.0
+    beam_center_offset_mm: [0.0, 0.0]
+    produces: [converging]              # Plano-convex focuses collimated input
+
+# --- References to sub-assets ---
+# Each section can reference local files AND external repos via UUID
+
+optics:
+  optiland_file: optics/optiland.json
+  optiland_ref:
+    repo: "https://github.com/openuc2/openuc2-optiland-models"
+    uuid: "opt-a1b2c3d4-lens-pcx-50mm"
+    commit: null                        # Pin to specific commit when stable
+  model_file: optics/model.py
+  coordinate_system: optics/coordinate_system.yaml
+  variable_parameters: optics/variable_parameters.yaml
+
+cad:
+  inventor_assembly: "ASS - 2021 - CUBLEND40F50 - V04.iam"
+  inventor_ref:
+    repo: "https://github.com/openuc2/openuc2-cad-modules"
+    uuid: "cad-a1b2c3d4-lens-pcx-50mm"
+    path: "modules/lens-pos-1x1/"
+    commit: null
+  coordinate_system: cad/coordinate_system.yaml
+  exports:
+    step: cad/exports/model.step
+    stl: cad/exports/model.stl
+    glb: cad/exports/model.glb
+  drawings: cad/drawings/
+  bom: cad/bom.yaml
+
+electronics:
+  has_electronics: false
+
+firmware:
+  has_firmware: false
+
+software:
+  imswitch:
+    has_imswitch: false                 # Passive optical element, no active control
+    config_snippet: null
+    driver: null
+    state_mapping: null
+  notes: "Passive element — no software control needed. Position is set mechanically."
+
+configurator:
+  icon: configurator/icon.svg
+  thumbnail: configurator/thumbnail.png
+  cad_preview: cad/exports/model.glb
+  description: "Plano-convex lens (f=50mm, Ø1\", N-BK7) for beam focusing and collimation."
+  price_eur: 100
+  autodeskInventor: "ASS - 2021 - CUBLEND40F50 - V04.iam"
+  notification: ""
+  done: true
+
+production:
+  printing: production/printing.yaml
+  supply_chain: production/supply_chain.yaml
+
+docs:
+  readme: README.md
+  datasheet: docs/datasheet.md
+  user_manual: docs/user-manual.md
+  assembly_guide: docs/assembly-guide.md
+  safety: docs/safety.md
+  troubleshooting: docs/troubleshooting.md

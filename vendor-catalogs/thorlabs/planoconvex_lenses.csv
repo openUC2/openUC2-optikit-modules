@@ -1,0 +1,11 @@
+id,name,vendor,sku,focalLength_mm,diameter_mm,material,curvature_r1_mm,curvature_r2_mm,center_thickness_mm,coating,price_eur,group
+lens-pcx-f25,Lens PCX f=25mm,Thorlabs,LA1951-A,25.0,25.4,N-BK7,inf,-12.9,7.4,AR-A,28,lenses
+lens-pcx-f30,Lens PCX f=30mm,Thorlabs,LA1289-A,30.0,12.7,N-BK7,inf,-15.5,4.1,AR-A,24,lenses
+lens-pcx-f40,Lens PCX f=40mm,Thorlabs,LA1422-A,40.0,25.4,N-BK7,inf,-20.6,6.0,AR-A,28,lenses
+lens-pcx-f50,Lens PCX f=50mm,Thorlabs,LA1131-A,50.0,25.4,N-BK7,inf,-25.8,5.3,AR-A,28,lenses
+lens-pcx-f75,Lens PCX f=75mm,Thorlabs,LA1608-A,75.0,25.4,N-BK7,inf,-38.8,4.2,AR-A,28,lenses
+lens-pcx-f100,Lens PCX f=100mm,Thorlabs,LA1509-A,100.0,25.4,N-BK7,inf,-51.5,3.6,AR-A,28,lenses
+lens-pcx-f150,Lens PCX f=150mm,Thorlabs,LA1433-A,150.0,25.4,N-BK7,inf,-77.6,3.2,AR-A,28,lenses
+lens-pcx-f200,Lens PCX f=200mm,Thorlabs,LA1708-A,200.0,25.4,N-BK7,inf,-103.4,2.9,AR-A,28,lenses
+lens-pcx-f250,Lens PCX f=250mm,Thorlabs,LA1461-A,250.0,25.4,N-BK7,inf,-129.2,2.8,AR-A,28,lenses
+lens-pcx-f300,Lens PCX f=300mm,Thorlabs,LA1484-A,300.0,25.4,N-BK7,inf,-155.1,2.7,AR-A,28,lenses

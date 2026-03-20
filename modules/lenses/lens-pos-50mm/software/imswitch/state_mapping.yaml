@@ -1,0 +1,36 @@
+# =============================================================================
+# state_mapping.yaml — ImSwitch state mapping for lens-pos-1x1
+# =============================================================================
+# Passive element — no active states to control.
+# This file defines metadata states that ImSwitch tracks for data provenance.
+# =============================================================================
+
+module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+module_id: "lens-pos-1x1"
+
+# This module has no active states (no motors, no electronics)
+active_states: []
+
+# Metadata states: recorded in experiment metadata for reproducibility
+metadata_states:
+  - name: focal_length_mm
+    type: static
+    value: 50.0
+    description: "Focal length of the installed lens"
+    recorded_in: "experiment_metadata.yaml"
+
+  - name: lens_sku
+    type: static
+    value: "LA1131-A"
+    description: "Vendor part number for traceability"
+
+  - name: dz_offset_mm
+    type: manual
+    default: 0.0
+    description: >
+      User-reported axial offset of the lens within the cube.
+      Set manually in ImSwitch when the user adjusts the insert position.
+    visualization:
+      transform: translate_z
+      scale: 1.0   # mm to mm (already in mm)
+      target_object: "lens_body"
