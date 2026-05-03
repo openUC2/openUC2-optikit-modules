@@ -1,0 +1,32 @@
+# =============================================================================
+# coordinate_system.yaml — CAD coordinate system for camera-usb
+# =============================================================================
+
+uuid: "cad-d4e5f6a7-camera-usb-hik"
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+
+csys_cad:
+  description: >
+    Origin at the geometric center of the UC2 cube.
+    Axes aligned with cube faces.
+  origin_from_corner_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: "Along nominal optical axis (through +/-X faces)"
+    y: "Horizontal (through +/-Y faces)"
+    z: "Vertical / up (through +/-Z faces)"
+
+inventor_csys:
+  - name: "CSYS_CUBE_CENTER"
+    description: "Geometric center of the cube"
+    origin_mm: [25.0, 25.0, 25.0]
+  - name: "CSYS_SENSOR_FACE"
+    description: "Active surface of the CMOS sensor"
+    origin_mm: [25.0, 25.0, 25.0]
+
+transform_to_optical: "../optics/coordinate_system.yaml"
+
+inventor_file: "ASS - 2023 - CAMHIK013 - V02.iam"
+inventor_repo:
+  url: "https://github.com/openuc2/openuc2-cad-modules"
+  uuid: "cad-d4e5f6a7-camera-usb-hik"
+  path: "modules/camera-usb/"

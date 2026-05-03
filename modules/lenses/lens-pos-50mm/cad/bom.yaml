@@ -1,7 +1,7 @@
 # =============================================================================
 # bom.yaml — Bill of Materials for lens-pos-1x1
 # =============================================================================
-# Derived from the Inventor assembly. Linked to the parts database.
+# Derived from the Inventor assembly. Linked to the parts database. Exported from the BOM from Inventor
 # =============================================================================
 
 module_uuid: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"

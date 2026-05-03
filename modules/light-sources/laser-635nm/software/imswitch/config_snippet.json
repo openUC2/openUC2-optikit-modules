@@ -1,0 +1,20 @@
+{
+  "_module_uuid": "e5f6a7b8-c9d0-1234-ef01-567890123456",
+  "_module_id": "laser-635nm",
+  "lasers": {
+    "Laser_635": {
+      "analogChannel": null,
+      "digitalLine": "GPIO17",
+      "managerName": "GPIOLaserManager",
+      "managerProperties": {
+        "rs232device": null,
+        "wavelength": 635,
+        "vendor": "Thorlabs",
+        "sku": "CPS635R"
+      },
+      "valueRangeMin": 0,
+      "valueRangeMax": 450,
+      "valueRangeStep": 1
+    }
+  }
+}

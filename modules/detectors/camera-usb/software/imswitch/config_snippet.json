@@ -1,0 +1,23 @@
+{
+  "_module_uuid": "d4e5f6a7-b8c9-0123-def0-456789012345",
+  "_module_id": "camera-usb",
+  "detectors": {
+    "Camera_HIK_USB": {
+      "managerName": "HikCamManager",
+      "managerProperties": {
+        "cameraListIndex": 0,
+        "hikcam": {
+          "vendor": "Hikrobot",
+          "sku": "MV-CA013-21UC",
+          "exposure": 10000,
+          "gain": 0.0,
+          "blacklevel": 100,
+          "image_width": 6080,
+          "image_height": 3800
+        }
+      },
+      "forAcquisition": true,
+      "forFocusLock": false
+    }
+  }
+}

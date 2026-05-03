@@ -1,0 +1,61 @@
+# =============================================================================
+# variable_parameters.yaml — Tunable DOFs for camera-usb
+# =============================================================================
+
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+
+parameters:
+  - name: exposure_us
+    description: "Exposure time in microseconds (set per acquisition)"
+    optiland_variable:
+      type: custom
+      surface_number: 1
+    default: 10000
+    min: 50
+    max: 1000000
+    step: 1
+    unit: us
+    mechanical_constraint: "Soft constraint enforced in firmware / driver."
+
+  - name: gain_db
+    description: "Analog gain (digital noise rises above 12 dB)"
+    optiland_variable:
+      type: custom
+      surface_number: 1
+    default: 0.0
+    min: 0.0
+    max: 24.0
+    step: 0.1
+    unit: dB
+    mechanical_constraint: "Soft constraint enforced in firmware / driver."
+
+  - name: dz_mm
+    description: "Sensor z-position fine-tune within cube (focus calibration)"
+    optiland_variable:
+      type: thickness
+      surface_number: 1
+    default: 0.0
+    min: -1.0
+    max: 1.0
+    step: 0.05
+    unit: mm
+    mechanical_constraint: "Soft constraint enforced in firmware / driver."
+
+discrete_alternatives:
+  same_mount_compatible:
+    - sku: "MV-CA013-21UC"
+      vendor: Hikrobot
+      resolution_px: [6080, 3800]
+      pixel_pitch_um: 1.85
+    - sku: "MV-CA050-20UC"
+      vendor: Hikrobot
+      resolution_px: [2448, 2048]
+      pixel_pitch_um: 3.45
+    - sku: "DMK 33UX264"
+      vendor: "The Imaging Source"
+      resolution_px: [2448, 2048]
+      pixel_pitch_um: 3.45
+    - sku: "MQ013MG-ON"
+      vendor: Ximea
+      resolution_px: [1280, 1024]
+      pixel_pitch_um: 4.8

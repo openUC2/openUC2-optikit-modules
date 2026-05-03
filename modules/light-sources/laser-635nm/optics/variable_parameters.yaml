@@ -1,0 +1,49 @@
+# =============================================================================
+# variable_parameters.yaml — Tunable DOFs for laser-635nm
+# =============================================================================
+
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+
+parameters:
+  - name: enable
+    description: "Hardware enable line - driven by ImSwitch via GPIO"
+    optiland_variable:
+      type: custom
+      surface_number: 1
+    default: false
+    min: false
+    max: true
+    step: null
+    unit: bool
+    mechanical_constraint: "Soft constraint enforced in firmware / driver."
+
+  - name: dz_mm
+    description: "Axial position of source pupil within the cube"
+    optiland_variable:
+      type: thickness
+      surface_number: 1
+    default: 0.0
+    min: -2.0
+    max: 2.0
+    step: 0.1
+    unit: mm
+    mechanical_constraint: "Soft constraint enforced in firmware / driver."
+
+discrete_alternatives:
+  same_mount_compatible:
+    - sku: "CPS635R"
+      vendor: Thorlabs
+      wavelength_nm: 635
+      power_mW: 4.5
+    - sku: "CPS532"
+      vendor: Thorlabs
+      wavelength_nm: 532
+      power_mW: 4.5
+    - sku: "CPS450"
+      vendor: Thorlabs
+      wavelength_nm: 450
+      power_mW: 4.5
+    - sku: "CPS850V"
+      vendor: Thorlabs
+      wavelength_nm: 850
+      power_mW: 0.9

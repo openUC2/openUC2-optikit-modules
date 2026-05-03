@@ -1,0 +1,54 @@
+# =============================================================================
+# supply_chain.yaml — Supply chain and pricing for camera-usb
+# =============================================================================
+
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+
+# External procurement
+external_parts:
+  - part_id: "hik-MV-CA013-21UC"
+    name: "Hikrobot 1.3 MP USB3 Vision Color Camera"
+    vendor: "Hikrobot"
+    sku: "MV-CA013-21UC"
+    url: "https://www.hikrobotics.com/en/machinevision/productdetail?id=15991"
+    price_eur: 285.00
+    currency: EUR
+    lead_time_days: 5
+    moq: 1
+    availability: "Stock (regional distributor)"
+    alternative_vendors:
+      - vendor: "The Imaging Source"
+        sku: "DMK 33UX264"
+        notes: "Similar 2/3-inch CMOS, monochrome variant available"
+      - vendor: "Ximea"
+        sku: "MQ013MG-ON"
+        notes: "Smaller sensor, faster framerate"
+  - part_id: "usb-c-cable-1m"
+    name: "USB3.2 Type-C cable, 1 m"
+    vendor: "L-com"
+    sku: "USB31C-LOCK"
+    price_eur: 1.50
+    currency: EUR
+    lead_time_days: 7
+    moq: 1
+
+# Internal production
+internal_parts:
+  - part_id: "uc2-cube-v4"
+    production_method: "injection molding"
+    cost_eur: 2.50
+  - part_id: "insert-camera-cmount"
+    production_method: "3D printing (FDM, PETG)"
+    cost_eur: 4.20
+    material_cost_eur: 1.40
+    print_time_min: 60
+
+# Total cost breakdown
+cost_summary:
+  external_parts_eur: 285.00
+  internal_parts_eur: 8.20
+  assembly_labor_min: 5
+  assembly_cost_eur: 2.50
+  total_cost_eur: 295.70
+  selling_price_eur: 380.00
+  margin_pct: 22

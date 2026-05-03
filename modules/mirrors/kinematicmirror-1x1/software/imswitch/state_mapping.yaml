@@ -1,0 +1,25 @@
+# =============================================================================
+# state_mapping.yaml — ImSwitch state mapping for kinematicmirror-1x1
+# =============================================================================
+# Passive element - no active states to control.
+# This file defines metadata states that ImSwitch tracks for data provenance.
+# =============================================================================
+
+module_uuid: "b2c3d4e5-f6a7-8901-bcde-f23456789012"
+module_id: "kinematicmirror-1x1"
+
+active_states: []
+
+metadata_states:
+  - name: vendor_sku
+    type: static
+    value: "POLARIS-K1 + BB1-E02"
+    description: "Vendor part number for traceability"
+  - name: rxOffset_deg
+    type: manual
+    default: 0.0
+    description: "Pitch offset of the mirror, recorded after alignment"
+  - name: ryOffset_deg
+    type: manual
+    default: 0.0
+    description: "Yaw offset of the mirror, recorded after alignment"

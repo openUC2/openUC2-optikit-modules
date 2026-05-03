@@ -1,0 +1,48 @@
+# =============================================================================
+# bom.yaml — Bill of Materials for kinematicmirror-1x1
+# =============================================================================
+
+module_uuid: "b2c3d4e5-f6a7-8901-bcde-f23456789012"
+generated_from: "ASS - 2022 - KMNT45D - V03.iam"
+generated_date: "2026-03-10"
+
+items:
+  - part_id: "uc2-cube-v4"
+    name: "UC2 Cube v4 (injection molded)"
+    quantity: 1
+    source: in-house
+    material: "ABS (IM) / PLA (3DP)"
+    estimated_cost_eur: 2.50
+    notes: "Standard cube, shared across all 1x1 modules"
+
+  - part_id: "insert-mirror-mount-25mm"
+    name: "3D-printed kinematic mount adapter"
+    quantity: 1
+    source: in-house
+    material: "PLA (3D printed)"
+    estimated_cost_eur: 2.00
+    print_time_min: 35
+    stl_file: "cad/exports/insert-mirror-mount-25mm.stl"
+    notes: "Holds POLARIS-K1 against the cube wall, exposes both micrometers"
+
+  - part_id: "thorlabs-POLARIS-K1"
+    name: "POLARIS 1-inch Kinematic Mirror Mount, 2 Adjusters"
+    quantity: 1
+    source: external
+    vendor: "Thorlabs"
+    sku: "POLARIS-K1"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=POLARIS-K1"
+    estimated_cost_eur: 138.50
+    lead_time_days: 1
+
+  - part_id: "thorlabs-BB1-E02"
+    name: "1-inch Broadband Dielectric Mirror, 400-750 nm"
+    quantity: 1
+    source: external
+    vendor: "Thorlabs"
+    sku: "BB1-E02"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=BB1-E02"
+    estimated_cost_eur: 30.00
+    lead_time_days: 1
+
+total_estimated_cost_eur: 173.00

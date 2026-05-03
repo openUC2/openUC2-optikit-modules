@@ -1,0 +1,36 @@
+# =============================================================================
+# state_mapping.yaml — ImSwitch state mapping for laser-635nm
+# =============================================================================
+# Active element - ImSwitch exposes these states to user scripts and the GUI.
+# =============================================================================
+
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+module_id: "laser-635nm"
+
+active_states:
+  - name: enable
+    type: bool
+    default: false
+    imswitch_property: "LaserManager.enabled"
+    description: "Hardware enable line via GPIO"
+
+  - name: power_setpoint_mW
+    type: continuous
+    default: 0.0
+    min: 0.0
+    max: 4.5
+    unit: mW
+    imswitch_property: "LaserManager.power"
+    description: >
+      Software power setpoint. The CPS635R driver is current-only;
+      ImSwitch maps this to PWM duty cycle on the GPIO enable line.
+
+metadata_states:
+  - name: vendor_sku
+    type: static
+    value: "CPS635R"
+    description: "Vendor part number for traceability"
+  - name: dz_offset_mm
+    type: manual
+    default: 0.0
+    description: "User-reported axial offset of the module within the cube"

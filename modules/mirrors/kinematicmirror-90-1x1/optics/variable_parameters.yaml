@@ -1,0 +1,49 @@
+# =============================================================================
+# variable_parameters.yaml — Tunable DOFs for kinematicmirror-90-1x1
+# =============================================================================
+
+module_uuid: "c3d4e5f6-a7b8-9012-cdef-345678901234"
+
+parameters:
+  - name: rx_offset_deg
+    description: "Pitch tilt - deflects return beam vertically"
+    optiland_variable:
+      type: rx
+      surface_number: 1
+    default: 0.0
+    min: -4.0
+    max: 4.0
+    step: 0.01
+    unit: deg
+    mechanical_constraint: "Mechanical limit of the kinematic mount micrometer screw."
+
+  - name: ry_offset_deg
+    description: "Yaw tilt - deflects return beam horizontally"
+    optiland_variable:
+      type: ry
+      surface_number: 1
+    default: 0.0
+    min: -4.0
+    max: 4.0
+    step: 0.01
+    unit: deg
+    mechanical_constraint: "Mechanical limit of the kinematic mount micrometer screw."
+
+discrete_alternatives:
+  same_mount_compatible:
+    - sku: "BB1-E01"
+      vendor: Thorlabs
+      wavelength_range_nm: [350, 400]
+      reflectance_pct: 99.0
+    - sku: "BB1-E02"
+      vendor: Thorlabs
+      wavelength_range_nm: [400, 750]
+      reflectance_pct: 99.0
+    - sku: "BB1-E03"
+      vendor: Thorlabs
+      wavelength_range_nm: [750, 1100]
+      reflectance_pct: 99.0
+    - sku: "PF10-03-P01"
+      vendor: Thorlabs
+      notes: "Protected silver - broader range (450 nm-20 um)"
+      reflectance_pct: 96.0

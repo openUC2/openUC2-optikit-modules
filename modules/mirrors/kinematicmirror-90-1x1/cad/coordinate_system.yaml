@@ -1,0 +1,32 @@
+# =============================================================================
+# coordinate_system.yaml — CAD coordinate system for kinematicmirror-90-1x1
+# =============================================================================
+
+uuid: "cad-c3d4e5f6-mirror-90deg"
+module_uuid: "c3d4e5f6-a7b8-9012-cdef-345678901234"
+
+csys_cad:
+  description: >
+    Origin at the geometric center of the UC2 cube.
+    Axes aligned with cube faces.
+  origin_from_corner_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: "Along nominal optical axis (through +/-X faces)"
+    y: "Horizontal (through +/-Y faces)"
+    z: "Vertical / up (through +/-Z faces)"
+
+inventor_csys:
+  - name: "CSYS_CUBE_CENTER"
+    description: "Geometric center of the cube"
+    origin_mm: [25.0, 25.0, 25.0]
+  - name: "CSYS_MIRROR_FACE"
+    description: "Front (reflective) surface of the mirror"
+    origin_mm: [25.0, 25.0, 25.0]
+
+transform_to_optical: "../optics/coordinate_system.yaml"
+
+inventor_file: "ASS - 2022 - KMNT90D - V03.iam"
+inventor_repo:
+  url: "https://github.com/openuc2/openuc2-cad-modules"
+  uuid: "cad-c3d4e5f6-mirror-90deg"
+  path: "modules/kinematicmirror-90-1x1/"

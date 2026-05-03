@@ -1,0 +1,28 @@
+# =============================================================================
+# coordinate_system.yaml — Optical coordinate system for camera-usb
+# =============================================================================
+
+uuid: "opt-d4e5f6a7-camera-usb-hik"
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+
+csys_opt:
+  description: >
+    Origin at the geometric centre of the active sensor area.
+    Z points along the optical axis, opposite the direction of the
+    incoming light (so the sensor surface is at z=0 facing -Z).
+  origin_in_cube_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: [0, 1, 0]
+    y: [0, 0, 1]
+    z: [-1, 0, 0]
+
+transform_cad_to_opt:
+  matrix_4x4:
+    - [0, 1, 0, 0]
+    - [0, 0, 1, 0]
+    - [-1, 0, 0, 0]
+    - [0, 0, 0, 1]
+
+beam_path:
+  entry_point_mm: [0.0, 0.0, 0.0]
+  chief_ray_normal: [0.0, 0.0, -1.0]

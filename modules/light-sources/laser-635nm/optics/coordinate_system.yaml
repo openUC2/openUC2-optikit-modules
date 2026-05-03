@@ -1,0 +1,28 @@
+# =============================================================================
+# coordinate_system.yaml — Optical coordinate system for laser-635nm
+# =============================================================================
+
+uuid: "opt-e5f6a7b8-laser-cps635r"
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+
+csys_opt:
+  description: >
+    Origin at the exit pupil of the laser module (centre of the
+    output collimating lens). Z points along the direction of beam
+    propagation (out of the source, into the rest of the system).
+  origin_in_cube_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: [0, 1, 0]
+    y: [0, 0, 1]
+    z: [1, 0, 0]
+
+transform_cad_to_opt:
+  matrix_4x4:
+    - [0, 1, 0, 0]
+    - [0, 0, 1, 0]
+    - [1, 0, 0, 0]
+    - [0, 0, 0, 1]
+
+beam_path:
+  entry_point_mm: [0.0, 0.0, 0.0]
+  exit_point_mm:  [25.0, 0.0, 0.0]

@@ -1,0 +1,54 @@
+# =============================================================================
+# bom.yaml — Bill of Materials for laser-635nm
+# =============================================================================
+
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+generated_from: "ASS - 2023 - LSRCPS635R - V02.iam"
+generated_date: "2026-03-10"
+
+items:
+  - part_id: "uc2-cube-v4"
+    name: "UC2 Cube v4 (injection molded)"
+    quantity: 1
+    source: in-house
+    material: "ABS (IM) / PLA (3DP)"
+    estimated_cost_eur: 2.50
+
+  - part_id: "insert-laser-cps"
+    name: "3D-printed CPS laser holder for UC2 cube"
+    quantity: 1
+    source: in-house
+    material: "PLA (3D printed)"
+    estimated_cost_eur: 0.40
+    print_time_min: 40
+    stl_file: "cad/exports/insert-laser-cps.stl"
+    notes: "Press-fit 11 mm CPS laser body, axial alignment +/-0.1 mm"
+
+  - part_id: "thorlabs-CPS635R"
+    name: "635 nm collimated laser diode module, 4.5 mW"
+    quantity: 1
+    source: external
+    vendor: "Thorlabs"
+    sku: "CPS635R"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=CPS635R"
+    estimated_cost_eur: 85.00
+    lead_time_days: 3
+
+  - part_id: "molex-2pin-5v"
+    name: "2-pin Micro-Fit power pigtail"
+    quantity: 1
+    source: external
+    vendor: "Molex"
+    sku: "43645-0200"
+    estimated_cost_eur: 0.50
+    lead_time_days: 5
+
+  - part_id: "psu-5v-2A-din"
+    name: "5 V 2 A DIN-rail PSU (shared across active modules)"
+    quantity: 0.25
+    source: external
+    vendor: "Mean Well"
+    sku: "HDR-15-5"
+    estimated_cost_eur: 2.50
+
+total_estimated_cost_eur: 93.40

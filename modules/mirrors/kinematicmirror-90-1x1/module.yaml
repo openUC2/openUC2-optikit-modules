@@ -1,0 +1,137 @@
+# =============================================================================
+# module.yaml — Master descriptor for UC2 module: Kinematic Mirror (90 deg)
+# =============================================================================
+# This file is the single source of truth for this module.
+# All paths are relative to this file's directory.
+# External references use UUIDs pointing to canonical repos.
+# =============================================================================
+
+# --- Identity ---
+id: kinematicmirror-90-1x1
+uuid: c3d4e5f6-a7b8-9012-cdef-345678901234   # Globally unique, never changes
+name: "Kinematic Mirror (90 deg)"
+version: 1.0.0
+category: mirror
+scenario: 2             # 1=handcrafted, 2=generic/template, 3=external
+group: mirrors
+grid_size: [1, 1]       # Width x Height in UC2 grid units (50mm each)
+color: "#4FC3F7"
+
+# --- Metadata ---
+metadata:
+  author: "openUC2 Team"
+  date: "2026-03-10"
+  license: "CERN-OHL-S-2.0"
+  base_module: "UC2 Cube v4"
+  vendor: "Thorlabs"
+  sku: "POLARIS-K1 + BB1-E02"
+  etag: "v4-2026Q1"                     # Hardware revision tag
+  url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=POLARIS-K1"
+  tags:
+    - broadband-dielectric
+    - 1-inch
+    - kinematic
+    - retro-reflect
+
+# --- Parameters ---
+parameters:
+  static:                               # Fixed at manufacturing / purchase time
+    diameter_mm: 25.4
+    thickness_mm: 6.0
+    mirror_angle_deg: 90.0
+    fold_angle_deg: 180.0
+    reflectance_pct: 99.0
+    wavelength_range_nm: [400, 750]
+    surface_quality: 10-5
+    surface_flatness: lambda/10
+    tilt_range_deg: 4.0
+    tilt_resolution_arcsec: 14.0
+    mass_g: 75.0
+
+  variable:                             # Adjustable in the assembled system
+    rx_offset_deg:
+      default: 0.0
+      min: -4.0
+      max: 4.0
+      step: 0.01
+      unit: deg
+      description: "Pitch tilt - deflects return beam vertically"
+    ry_offset_deg:
+      default: 0.0
+      min: -4.0
+      max: 4.0
+      step: 0.01
+      unit: deg
+      description: "Yaw tilt - deflects return beam horizontally"
+
+# --- Ports ---
+ports:
+  - id: port-optical-bidir
+    face: "+X"
+    type: optical
+    description: "Bidirectional optical port - beam enters and returns"
+    beam_height_mm: 25.0
+    beam_center_offset_mm: [0.0, 0.0]
+
+# --- References to sub-assets ---
+
+optics:
+  optiland_file: optics/optiland.json
+  optiland_ref:
+    repo: "https://github.com/openuc2/openuc2-optiland-models"
+    uuid: "opt-c3d4e5f6-mirror-90deg"
+    commit: null
+  model_file: optics/model.py
+  coordinate_system: optics/coordinate_system.yaml
+  variable_parameters: optics/variable_parameters.yaml
+
+cad:
+  inventor_assembly: "ASS - 2022 - KMNT90D - V03.iam"
+  inventor_ref:
+    repo: "https://github.com/openuc2/openuc2-cad-modules"
+    uuid: "cad-c3d4e5f6-mirror-90deg"
+    path: "modules/kinematicmirror-90-1x1/"
+    commit: null
+  coordinate_system: cad/coordinate_system.yaml
+  exports:
+    step: cad/exports/model.step
+    stl:  cad/exports/model.stl
+    glb:  cad/exports/model.glb
+  drawings: cad/drawings/
+  bom: cad/bom.yaml
+
+electronics:
+  has_electronics: false
+
+firmware:
+  has_firmware: false
+
+software:
+  imswitch:
+    has_imswitch: false                 # Passive optical element, no active control
+    config_snippet: null
+    driver: null
+    state_mapping: null
+  notes: "Passive element - no software control needed."
+
+configurator:
+  icon: configurator/icon.svg
+  thumbnail: configurator/thumbnail.png
+  cad_preview: cad/exports/model.glb
+  description: "Two-axis kinematic mount oriented for normal-incidence retro-reflection (mirror perpendicular to beam)"
+  price_eur: 240
+  autodeskInventor: "ASS - 2022 - KMNT90D - V03.iam"
+  notification: ""
+  done: true
+
+production:
+  printing: production/printing.yaml
+  supply_chain: production/supply_chain.yaml
+
+docs:
+  readme: README.md
+  datasheet: docs/datasheet.md
+  user_manual: docs/user-manual.md
+  assembly_guide: docs/assembly-guide.md
+  safety: docs/safety.md
+  troubleshooting: docs/troubleshooting.md

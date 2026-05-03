@@ -1,0 +1,157 @@
+# =============================================================================
+# module.yaml — Master descriptor for UC2 module: USB Camera (HIK MV-CA013-21UC)
+# =============================================================================
+# This file is the single source of truth for this module.
+# All paths are relative to this file's directory.
+# External references use UUIDs pointing to canonical repos.
+# =============================================================================
+
+# --- Identity ---
+id: camera-usb
+uuid: d4e5f6a7-b8c9-0123-def0-456789012345   # Globally unique, never changes
+name: "USB Camera (HIK MV-CA013-21UC)"
+version: 1.0.0
+category: detector
+scenario: 2             # 1=handcrafted, 2=generic/template, 3=external
+group: cameras
+grid_size: [1, 1]       # Width x Height in UC2 grid units (50mm each)
+color: "#E91E63"
+
+# --- Metadata ---
+metadata:
+  author: "openUC2 Team"
+  date: "2026-03-10"
+  license: "CERN-OHL-S-2.0"
+  base_module: "UC2 Cube v4"
+  vendor: "Hikrobot"
+  sku: "MV-CA013-21UC"
+  etag: "v4-2026Q1"                     # Hardware revision tag
+  url: "https://www.hikrobotics.com/en/machinevision/productdetail?id=15991"
+  tags:
+    - cmos
+    - color
+    - global-shutter
+    - usb3
+    - c-mount
+
+# --- Parameters ---
+parameters:
+  static:                               # Fixed at manufacturing / purchase time
+    sensor_width_mm: 11.25
+    sensor_height_mm: 7.03
+    sensor_diagonal_mm: 13.27
+    pixel_pitch_um: 1.85
+    resolution_x_px: 6080
+    resolution_y_px: 3800
+    color_filter: Bayer RGGB
+    shutter_type: global
+    max_frame_rate_hz: 60
+    bit_depth: 12
+    quantum_efficiency_pct: 72.0
+    qe_peak_wavelength_nm: 525
+    dynamic_range_db: 70
+    interface: USB3 Vision (USB3.1 Gen1)
+    lens_mount: C-mount (1-inch 32 UN)
+    back_focal_distance_mm: 17.526
+    operating_voltage_v: 5.0
+    operating_current_ma: 350
+    mass_g: 75.0
+
+  variable:                             # Adjustable in the assembled system
+    exposure_us:
+      default: 10000
+      min: 50
+      max: 1000000
+      step: 1
+      unit: us
+      description: "Exposure time in microseconds (set per acquisition)"
+    gain_db:
+      default: 0.0
+      min: 0.0
+      max: 24.0
+      step: 0.1
+      unit: dB
+      description: "Analog gain (digital noise rises above 12 dB)"
+    dz_mm:
+      default: 0.0
+      min: -1.0
+      max: 1.0
+      step: 0.05
+      unit: mm
+      description: "Sensor z-position fine-tune within cube (focus calibration)"
+
+# --- Ports ---
+ports:
+  - id: port-optical-in
+    face: "+X"
+    type: optical
+    description: "Optical input - beam focuses onto sensor at z=cube_center"
+    beam_height_mm: 25.0
+    beam_center_offset_mm: [0.0, 0.0]
+  - id: port-usb
+    face: "-X"
+    type: data
+    description: "USB3 Vision (Type-C) - image data + camera control"
+
+# --- References to sub-assets ---
+
+optics:
+  optiland_file: optics/optiland.json
+  optiland_ref:
+    repo: "https://github.com/openuc2/openuc2-optiland-models"
+    uuid: "opt-d4e5f6a7-camera-usb-hik"
+    commit: null
+  model_file: optics/model.py
+  coordinate_system: optics/coordinate_system.yaml
+  variable_parameters: optics/variable_parameters.yaml
+
+cad:
+  inventor_assembly: "ASS - 2023 - CAMHIK013 - V02.iam"
+  inventor_ref:
+    repo: "https://github.com/openuc2/openuc2-cad-modules"
+    uuid: "cad-d4e5f6a7-camera-usb-hik"
+    path: "modules/camera-usb/"
+    commit: null
+  coordinate_system: cad/coordinate_system.yaml
+  exports:
+    step: cad/exports/model.step
+    stl:  cad/exports/model.stl
+    glb:  cad/exports/model.glb
+  drawings: cad/drawings/
+  bom: cad/bom.yaml
+
+electronics:
+  has_electronics: true
+
+firmware:
+  has_firmware: false
+
+software:
+  imswitch:
+    has_imswitch: true
+    config_snippet: software/imswitch/config_snippet.json
+    driver: software/imswitch/driver.py
+    state_mapping: software/imswitch/state_mapping.yaml
+  notes: "Active element - ImSwitch controller exposes the variable parameters."
+
+configurator:
+  icon: configurator/icon.svg
+  thumbnail: configurator/thumbnail.png
+  cad_preview: cad/exports/model.glb
+  description: "1.3 MP color CMOS camera, 1.85 um pixels, USB3 Vision, C-mount thread"
+  price_eur: 380
+  autodeskInventor: "ASS - 2023 - CAMHIK013 - V02.iam"
+  notification: ""
+  done: true
+
+production:
+  printing: production/printing.yaml
+  supply_chain: production/supply_chain.yaml
+
+docs:
+  readme: README.md
+  datasheet: docs/datasheet.md
+  user_manual: docs/user-manual.md
+  assembly_guide: docs/assembly-guide.md
+  safety: docs/safety.md
+  troubleshooting: docs/troubleshooting.md

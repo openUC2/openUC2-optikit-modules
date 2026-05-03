@@ -1,0 +1,47 @@
+[
+  {
+    "sku": "LA1131-A",
+    "zmx": "LA1131-A.zmx",
+    "shape": "plano-convex",
+    "focal_mm": 50.0,
+    "diameter_mm": 25.4,
+    "material": "N-BK7",
+    "coating": "AR-A"
+  },
+  {
+    "sku": "LA1509-A",
+    "zmx": "LA1509-A.zmx",
+    "shape": "plano-convex",
+    "focal_mm": 100.0,
+    "diameter_mm": 25.4,
+    "material": "N-BK7",
+    "coating": "AR-A"
+  },
+  {
+    "sku": "LA1979-A",
+    "zmx": "LA1979-A.zmx",
+    "shape": "plano-convex",
+    "focal_mm": 200.0,
+    "diameter_mm": 25.4,
+    "material": "N-BK7",
+    "coating": "AR-A"
+  },
+  {
+    "sku": "AC254-050-A-ML",
+    "zmx": "AC254-050-A-ML-Zemax-ZMX.zmx",
+    "shape": "achromatic-doublet",
+    "focal_mm": 50.0,
+    "diameter_mm": 25.4,
+    "material": "N-BAF10/SF10",
+    "coating": "AR-A"
+  },
+  {
+    "sku": "AC254-100-A-ML",
+    "zmx": "AC254-100-A-ML-Zemax-ZMX.zmx",
+    "shape": "achromatic-doublet",
+    "focal_mm": 100.0,
+    "diameter_mm": 25.4,
+    "material": "N-BAF10/SF10",
+    "coating": "AR-A"
+  }
+]

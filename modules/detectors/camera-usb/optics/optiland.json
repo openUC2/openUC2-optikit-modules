@@ -1,0 +1,89 @@
+{
+  "_metadata": {
+    "generator": "openuc2-optikit",
+    "generator_version": "1.0.0",
+    "optiland_version": ">=0.5.0",
+    "uuid": "opt-d4e5f6a7-camera-usb-hik",
+    "module_uuid": "d4e5f6a7-b8c9-0123-def0-456789012345",
+    "description": "Records the image plane in a UC2 imaging chain. Sensor sits at the optical axis at z = 25 mm from the cube +X face. C-mount adapter projects 17.526 mm into the cube; the active sensor surface is recessed accordingly.",
+    "repo": "https://github.com/openuc2/openuc2-optiland-models",
+    "created": "2026-03-10",
+    "author": "openUC2 Team"
+  },
+  "aperture": {
+    "type": "imageSpace",
+    "value": 13.27
+  },
+  "fields": {
+    "type": "angle",
+    "values": [
+      {
+        "y": 0.0,
+        "x": 0.0,
+        "weight": 1.0
+      }
+    ]
+  },
+  "wavelengths": [
+    {
+      "value_um": 0.45,
+      "weight": 1.0,
+      "is_primary": false,
+      "label": "blue"
+    },
+    {
+      "value_um": 0.55,
+      "weight": 1.0,
+      "is_primary": true,
+      "label": "green (peak QE)"
+    },
+    {
+      "value_um": 0.65,
+      "weight": 1.0,
+      "is_primary": false,
+      "label": "red"
+    }
+  ],
+  "notes": {
+    "vendor": "Hikrobot",
+    "sku": "MV-CA013-21UC",
+    "sensor_diagonal_mm": 13.27,
+    "max_frame_rate_hz": 60,
+    "interface": "USB3 Vision (USB3.1 Gen1)"
+  },
+  "surfaces": [
+    {
+      "index": 0,
+      "comment": "Object surface - final image conjugate before sensor",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": 17.526,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 6.635
+    },
+    {
+      "index": 1,
+      "comment": "Detector image plane (11.25x7.03 mm CMOS)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": null,
+      "material": "air",
+      "is_stop": true,
+      "semi_aperture": 6.635,
+      "detector": {
+        "active_width_mm": 11.25,
+        "active_height_mm": 7.03,
+        "pixel_pitch_um": 1.85,
+        "resolution_px": [
+          6080,
+          3800
+        ],
+        "quantum_efficiency_pct": 72.0,
+        "qe_peak_wavelength_nm": 525,
+        "color_filter": "Bayer RGGB",
+        "shutter_type": "global"
+      }
+    }
+  ]
+}

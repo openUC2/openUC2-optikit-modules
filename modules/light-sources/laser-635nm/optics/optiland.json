@@ -1,0 +1,73 @@
+{
+  "_metadata": {
+    "generator": "openuc2-optikit",
+    "generator_version": "1.0.0",
+    "optiland_version": ">=0.5.0",
+    "uuid": "opt-e5f6a7b8-laser-cps635r",
+    "module_uuid": "e5f6a7b8-c9d0-1234-ef01-567890123456",
+    "description": "Provides a collimated red beam along the cube +X axis. The CPS series integrates the laser diode, a collimating lens, and a constant-current driver into a single 11 mm package. A 5 V external supply drives it; no separate controller is needed.",
+    "repo": "https://github.com/openuc2/openuc2-optiland-models",
+    "created": "2026-03-10",
+    "author": "openUC2 Team"
+  },
+  "aperture": {
+    "type": "EPD",
+    "value": 3.5
+  },
+  "fields": {
+    "type": "angle",
+    "values": [
+      {
+        "y": 0.0,
+        "x": 0.0,
+        "weight": 1.0
+      }
+    ]
+  },
+  "wavelengths": [
+    {
+      "value_um": 0.635,
+      "weight": 1.0,
+      "is_primary": true,
+      "label": "635 nm"
+    }
+  ],
+  "notes": {
+    "vendor": "Thorlabs",
+    "sku": "CPS635R",
+    "wavelength_nm": 635.0,
+    "power_mW": 4.5,
+    "laser_class": "3R"
+  },
+  "surfaces": [
+    {
+      "index": 0,
+      "comment": "Object surface - beam exit pupil of the laser module",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": 0.0,
+      "material": "air",
+      "is_stop": true,
+      "semi_aperture": 1.75,
+      "is_source": true,
+      "source": {
+        "type": "collimated_gaussian",
+        "wavelength_nm": 635.0,
+        "power_mW": 4.5,
+        "beam_diameter_mm": 3.5,
+        "beam_divergence_mrad": 0.5,
+        "polarization": "linear"
+      }
+    },
+    {
+      "index": 1,
+      "comment": "Reference image surface (placeholder, never reached in source-only export)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": null,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 0.0
+    }
+  ]
+}

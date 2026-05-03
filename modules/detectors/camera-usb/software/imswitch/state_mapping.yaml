@@ -1,0 +1,52 @@
+# =============================================================================
+# state_mapping.yaml — ImSwitch state mapping for camera-usb
+# =============================================================================
+# Active element - ImSwitch exposes these states to user scripts and the GUI.
+# =============================================================================
+
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+module_id: "camera-usb"
+
+active_states:
+  - name: exposure_us
+    type: continuous
+    default: 10000
+    min: 50
+    max: 1000000
+    unit: us
+    imswitch_property: "DetectorManager.exposure"
+    description: "Per-frame exposure time in microseconds"
+
+  - name: gain_db
+    type: continuous
+    default: 0.0
+    min: 0.0
+    max: 24.0
+    unit: dB
+    imswitch_property: "DetectorManager.gain"
+
+  - name: roi_x
+    type: continuous
+    default: 0
+    min: 0
+    max: 6080
+    unit: px
+    imswitch_property: "DetectorManager.roi.x"
+
+  - name: roi_y
+    type: continuous
+    default: 0
+    min: 0
+    max: 3800
+    unit: px
+    imswitch_property: "DetectorManager.roi.y"
+
+metadata_states:
+  - name: vendor_sku
+    type: static
+    value: "MV-CA013-21UC"
+    description: "Vendor part number for traceability"
+  - name: dz_offset_mm
+    type: manual
+    default: 0.0
+    description: "User-reported axial offset of the module within the cube"

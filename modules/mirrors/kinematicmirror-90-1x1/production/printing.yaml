@@ -1,0 +1,47 @@
+# =============================================================================
+# printing.yaml — 3D printing settings for kinematicmirror-90-1x1 insert
+# =============================================================================
+
+module_uuid: "c3d4e5f6-a7b8-9012-cdef-345678901234"
+
+parts_to_print:
+  - name: "Kinematic mount adapter"
+    stl_file: "cad/exports/insert-mirror-mount-25mm.stl"
+    quantity: 1
+
+    recommended_settings:
+      printer_type: FDM
+      material: PLA
+      nozzle_diameter_mm: 0.4
+      layer_height_mm: 0.2
+      infill_percent: 80
+      infill_pattern: grid
+      wall_count: 4
+      top_layers: 5
+      bottom_layers: 5
+      supports: false
+      orientation: "Standing (optical axis vertical)"
+      print_time_min: 35
+      material_usage_g: 6.3
+
+    alternative_settings:
+      - name: "High accuracy (SLA)"
+        printer_type: SLA
+        material: "Standard resin (black)"
+        layer_height_mm: 0.05
+        notes: "Better dimensional accuracy for tight mechanical fits"
+
+    critical_dimensions:
+      - feature: "POLARIS-K1 cradle"
+        nominal_mm: 25.4
+        tolerance_mm: 0.15
+        notes: "Half-circle cradle gripping the mount tube - must allow rotation for alignment"
+      - feature: "Outer dimensions"
+        nominal_mm: 47.0
+        tolerance_mm: 0.2
+        notes: "Must slide into UC2 cube channel"
+
+    post_processing:
+      - "Remove any stringing or supports"
+      - "Test-fit external part before final assembly"
+      - "Lightly file sliding surfaces"

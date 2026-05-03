@@ -1,0 +1,50 @@
+# =============================================================================
+# printing.yaml — 3D printing settings for camera-usb insert
+# =============================================================================
+
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+
+parts_to_print:
+  - name: "C-mount camera adapter"
+    stl_file: "cad/exports/insert-camera-cmount.stl"
+    quantity: 1
+
+    recommended_settings:
+      printer_type: FDM
+      material: PETG
+      nozzle_diameter_mm: 0.4
+      layer_height_mm: 0.2
+      infill_percent: 80
+      infill_pattern: grid
+      wall_count: 4
+      top_layers: 5
+      bottom_layers: 5
+      supports: false
+      orientation: "Standing (optical axis vertical)"
+      print_time_min: 60
+      material_usage_g: 10.8
+
+    alternative_settings:
+      - name: "High accuracy (SLA)"
+        printer_type: SLA
+        material: "Standard resin (black)"
+        layer_height_mm: 0.05
+        notes: "Better dimensional accuracy for tight mechanical fits"
+
+    critical_dimensions:
+      - feature: "C-mount thread bore"
+        nominal_mm: 25.4
+        tolerance_mm: 0.05
+        notes: "Tight tolerance - re-tap M25.4x0.794 (1-inch 32 UN) after printing"
+      - feature: "USB-C connector cutout"
+        nominal_mm: 9.5
+        tolerance_mm: 0.2
+        notes: "Width of cable strain-relief boot"
+      - feature: "Outer dimensions"
+        nominal_mm: 47.0
+        tolerance_mm: 0.2
+
+    post_processing:
+      - "Remove any stringing or supports"
+      - "Test-fit external part before final assembly"
+      - "Lightly file sliding surfaces"

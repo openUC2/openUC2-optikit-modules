@@ -1,0 +1,51 @@
+# =============================================================================
+# supply_chain.yaml — Supply chain and pricing for laser-635nm
+# =============================================================================
+
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+
+# External procurement
+external_parts:
+  - part_id: "thorlabs-CPS635R"
+    name: "635 nm collimated laser diode module"
+    vendor: "Thorlabs"
+    sku: "CPS635R"
+    url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=CPS635R"
+    price_eur: 85.00
+    currency: EUR
+    lead_time_days: 3
+    moq: 1
+    availability: "Stock"
+    alternative_vendors:
+      - vendor: "Coherent"
+        sku: "OBIS LX 637-25"
+        notes: "Higher power, larger footprint, requires controller"
+  - part_id: "molex-2pin-5v"
+    name: "Micro-Fit 2-pin pigtail"
+    vendor: "Molex"
+    sku: "43645-0200"
+    price_eur: 0.50
+    currency: EUR
+    lead_time_days: 5
+    moq: 100
+
+# Internal production
+internal_parts:
+  - part_id: "uc2-cube-v4"
+    production_method: "injection molding"
+    cost_eur: 2.50
+  - part_id: "insert-laser-cps"
+    production_method: "3D printing (FDM)"
+    cost_eur: 0.40
+    material_cost_eur: 0.15
+    print_time_min: 40
+
+# Total cost breakdown
+cost_summary:
+  external_parts_eur: 88.00
+  internal_parts_eur: 5.40
+  assembly_labor_min: 5
+  assembly_cost_eur: 2.50
+  total_cost_eur: 95.90
+  selling_price_eur: 145.00
+  margin_pct: 34

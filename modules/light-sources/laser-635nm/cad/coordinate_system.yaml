@@ -1,0 +1,32 @@
+# =============================================================================
+# coordinate_system.yaml — CAD coordinate system for laser-635nm
+# =============================================================================
+
+uuid: "cad-e5f6a7b8-laser-cps635r"
+module_uuid: "e5f6a7b8-c9d0-1234-ef01-567890123456"
+
+csys_cad:
+  description: >
+    Origin at the geometric center of the UC2 cube.
+    Axes aligned with cube faces.
+  origin_from_corner_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: "Along nominal optical axis (through +/-X faces)"
+    y: "Horizontal (through +/-Y faces)"
+    z: "Vertical / up (through +/-Z faces)"
+
+inventor_csys:
+  - name: "CSYS_CUBE_CENTER"
+    description: "Geometric center of the cube"
+    origin_mm: [25.0, 25.0, 25.0]
+  - name: "CSYS_BEAM_EXIT"
+    description: "Exit pupil of the laser collimator"
+    origin_mm: [25.0, 25.0, 25.0]
+
+transform_to_optical: "../optics/coordinate_system.yaml"
+
+inventor_file: "ASS - 2023 - LSRCPS635R - V02.iam"
+inventor_repo:
+  url: "https://github.com/openuc2/openuc2-cad-modules"
+  uuid: "cad-e5f6a7b8-laser-cps635r"
+  path: "modules/laser-635nm/"

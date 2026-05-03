@@ -1,0 +1,22 @@
+{
+  "_comment": "Passive optical element with no active control. ImSwitch records the metadata only.",
+  "_module_uuid": "b2c3d4e5-f6a7-8901-bcde-f23456789012",
+  "_module_id": "kinematicmirror-1x1",
+  "passiveElements": {
+    "kinematicmirror_1x1": {
+      "type": "PassiveOptic",
+      "properties": {
+        "category": "mirror",
+        "vendor": "Thorlabs",
+        "sku": "POLARIS-K1 + BB1-E02"
+      },
+      "position": {
+        "grid_x": null,
+        "grid_y": null,
+        "grid_z": null,
+        "rxOffset_deg": 0.0,
+        "ryOffset_deg": 0.0
+      }
+    }
+  }
+}

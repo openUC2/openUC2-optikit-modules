@@ -1,0 +1,100 @@
+{
+  "_metadata": {
+    "generator": "openuc2-optikit",
+    "generator_version": "1.0.0",
+    "optiland_version": ">=0.5.0",
+    "uuid": "opt-c3d4e5f6-mirror-90deg",
+    "module_uuid": "c3d4e5f6-a7b8-9012-cdef-345678901234",
+    "description": "Reflects an incoming optical beam directly back along its incoming axis (mirror normal parallel to beam axis). Useful as a fold/return for laser cavity construction or as the cat's-eye element of an autocollimator.",
+    "repo": "https://github.com/openuc2/openuc2-optiland-models",
+    "created": "2026-03-10",
+    "author": "openUC2 Team"
+  },
+  "aperture": {
+    "type": "EPD",
+    "value": 25.4
+  },
+  "fields": {
+    "type": "angle",
+    "values": [
+      {
+        "y": 0.0,
+        "x": 0.0,
+        "weight": 1.0
+      }
+    ]
+  },
+  "wavelengths": [
+    {
+      "value_um": 0.488,
+      "weight": 1.0,
+      "is_primary": false,
+      "label": "488 nm"
+    },
+    {
+      "value_um": 0.532,
+      "weight": 1.0,
+      "is_primary": true,
+      "label": "532 nm"
+    },
+    {
+      "value_um": 0.635,
+      "weight": 1.0,
+      "is_primary": false,
+      "label": "635 nm"
+    }
+  ],
+  "notes": {
+    "vendor": "Thorlabs",
+    "sku": "POLARIS-K1 + BB1-E02",
+    "fold_angle_deg": 180.0,
+    "reflectance_pct": 99.0,
+    "surface_quality": "10-5"
+  },
+  "surfaces": [
+    {
+      "index": 0,
+      "comment": "Object surface (entry to cube)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": 25.0,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 12.7
+    },
+    {
+      "index": 1,
+      "comment": "Front-surface dielectric mirror, normal parallel to beam (180 deg fold / retro-reflect)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": 0.0,
+      "material": "mirror",
+      "is_stop": true,
+      "is_reflective": true,
+      "semi_aperture": 12.7,
+      "decenter": {
+        "rx_deg": 0.0,
+        "ry_deg": 0.0,
+        "rz_deg": 0.0
+      },
+      "coating": {
+        "type": "broadband-dielectric",
+        "wavelength_range_nm": [
+          400,
+          750
+        ],
+        "avg_reflectance_pct": 99.0
+      }
+    },
+    {
+      "index": 2,
+      "comment": "Image surface (exit from cube on output port)",
+      "type": "standard",
+      "radius": "Infinity",
+      "thickness": null,
+      "material": "air",
+      "is_stop": false,
+      "semi_aperture": 0.0
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+# =============================================================================
+# bom.yaml — Bill of Materials for camera-usb
+# =============================================================================
+
+module_uuid: "d4e5f6a7-b8c9-0123-def0-456789012345"
+generated_from: "ASS - 2023 - CAMHIK013 - V02.iam"
+generated_date: "2026-03-10"
+
+items:
+  - part_id: "uc2-cube-v4"
+    name: "UC2 Cube v4 (injection molded)"
+    quantity: 1
+    source: in-house
+    material: "ABS (IM) / PLA (3DP)"
+    estimated_cost_eur: 2.50
+
+  - part_id: "insert-camera-cmount"
+    name: "3D-printed C-mount adapter for UC2 cube"
+    quantity: 1
+    source: in-house
+    material: "PETG (3D printed)"
+    estimated_cost_eur: 4.20
+    print_time_min: 60
+    stl_file: "cad/exports/insert-camera-cmount.stl"
+    notes: "Holds the C-mount flange; exposes USB-C connector through cube wall"
+
+  - part_id: "hik-MV-CA013-21UC"
+    name: "Hikrobot 1.3 MP USB3 Vision Color Camera, C-mount"
+    quantity: 1
+    source: external
+    vendor: "Hikrobot"
+    sku: "MV-CA013-21UC"
+    url: "https://www.hikrobotics.com/en/machinevision/productdetail?id=15991"
+    estimated_cost_eur: 285.00
+    lead_time_days: 5
+
+  - part_id: "usb-c-cable-1m"
+    name: "USB3.2 Type-C cable, 1 m, screw-lock"
+    quantity: 1
+    source: external
+    vendor: "L-com"
+    sku: "USB31C-LOCK"
+    estimated_cost_eur: 1.50
+
+total_estimated_cost_eur: 293.20

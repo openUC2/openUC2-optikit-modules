@@ -1,0 +1,146 @@
+# =============================================================================
+# module.yaml — Master descriptor for UC2 module: Laser 635 nm (CPS635R)
+# =============================================================================
+# This file is the single source of truth for this module.
+# All paths are relative to this file's directory.
+# External references use UUIDs pointing to canonical repos.
+# =============================================================================
+
+# --- Identity ---
+id: laser-635nm
+uuid: e5f6a7b8-c9d0-1234-ef01-567890123456   # Globally unique, never changes
+name: "Laser 635 nm (CPS635R)"
+version: 1.0.0
+category: light-source
+scenario: 2             # 1=handcrafted, 2=generic/template, 3=external
+group: fluorescence
+grid_size: [1, 1]       # Width x Height in UC2 grid units (50mm each)
+color: "#E53935"
+
+# --- Metadata ---
+metadata:
+  author: "openUC2 Team"
+  date: "2026-03-10"
+  license: "CERN-OHL-S-2.0"
+  base_module: "UC2 Cube v4"
+  vendor: "Thorlabs"
+  sku: "CPS635R"
+  etag: "v4-2026Q1"                     # Hardware revision tag
+  url: "https://www.thorlabs.com/thorproduct.cfm?partnumber=CPS635R"
+  tags:
+    - red-laser
+    - diode
+    - collimated
+    - class-3R
+
+# --- Parameters ---
+parameters:
+  static:                               # Fixed at manufacturing / purchase time
+    wavelength_nm: 635.0
+    wavelength_tolerance_nm: 10.0
+    power_mW: 4.5
+    power_stability_pct: 5.0
+    beam_diameter_mm: 3.5
+    beam_divergence_mrad: 0.5
+    polarization: linear
+    polarization_extinction_ratio_db: 100
+    longitudinal_modes: multi
+    operating_voltage_v: 5.0
+    operating_current_ma: 80
+    warmup_time_min: 5
+    laser_class: 3R
+    mtbf_hours: 10000
+    package_diameter_mm: 11.0
+    package_length_mm: 41.4
+    mass_g: 22.0
+
+  variable:                             # Adjustable in the assembled system
+    enable:
+      default: false
+      min: false
+      max: true
+      unit: bool
+      description: "Hardware enable line - driven by ImSwitch via GPIO"
+    dz_mm:
+      default: 0.0
+      min: -2.0
+      max: 2.0
+      step: 0.1
+      unit: mm
+      description: "Axial position of source pupil within the cube"
+
+# --- Ports ---
+ports:
+  - id: port-optical-out
+    face: "+X"
+    type: optical
+    description: "Collimated 635 nm beam, ~3.5 mm dia"
+    beam_height_mm: 25.0
+    beam_center_offset_mm: [0.0, 0.0]
+  - id: port-power-in
+    face: "-X"
+    type: power
+    description: "5 V DC input via 2-pin connector"
+
+# --- References to sub-assets ---
+
+optics:
+  optiland_file: optics/optiland.json
+  optiland_ref:
+    repo: "https://github.com/openuc2/openuc2-optiland-models"
+    uuid: "opt-e5f6a7b8-laser-cps635r"
+    commit: null
+  model_file: optics/model.py
+  coordinate_system: optics/coordinate_system.yaml
+  variable_parameters: optics/variable_parameters.yaml
+
+cad:
+  inventor_assembly: "ASS - 2023 - LSRCPS635R - V02.iam"
+  inventor_ref:
+    repo: "https://github.com/openuc2/openuc2-cad-modules"
+    uuid: "cad-e5f6a7b8-laser-cps635r"
+    path: "modules/laser-635nm/"
+    commit: null
+  coordinate_system: cad/coordinate_system.yaml
+  exports:
+    step: cad/exports/model.step
+    stl:  cad/exports/model.stl
+    glb:  cad/exports/model.glb
+  drawings: cad/drawings/
+  bom: cad/bom.yaml
+
+electronics:
+  has_electronics: true
+
+firmware:
+  has_firmware: false
+
+software:
+  imswitch:
+    has_imswitch: true
+    config_snippet: software/imswitch/config_snippet.json
+    driver: software/imswitch/driver.py
+    state_mapping: software/imswitch/state_mapping.yaml
+  notes: "Active element - ImSwitch controller exposes the variable parameters."
+
+configurator:
+  icon: configurator/icon.svg
+  thumbnail: configurator/thumbnail.png
+  cad_preview: cad/exports/model.glb
+  description: "Collimated 635 nm laser diode module, 4.5 mW class-3R, integrated drive electronics"
+  price_eur: 145
+  autodeskInventor: "ASS - 2023 - LSRCPS635R - V02.iam"
+  notification: ""
+  done: true
+
+production:
+  printing: production/printing.yaml
+  supply_chain: production/supply_chain.yaml
+
+docs:
+  readme: README.md
+  datasheet: docs/datasheet.md
+  user_manual: docs/user-manual.md
+  assembly_guide: docs/assembly-guide.md
+  safety: docs/safety.md
+  troubleshooting: docs/troubleshooting.md

@@ -1,0 +1,30 @@
+# =============================================================================
+# coordinate_system.yaml — Optical coordinate system for kinematicmirror-1x1
+# =============================================================================
+
+uuid: "opt-b2c3d4e5-mirror-45deg"
+module_uuid: "b2c3d4e5-f6a7-8901-bcde-f23456789012"
+
+csys_opt:
+  description: >
+    Origin at the centre of the mirror surface (front face).
+    Z points along the incoming beam axis;
+    the reflected beam leaves along the +Y axis (45 deg fold case)
+    or along -Z (90 deg / retro-reflect case).
+  origin_in_cube_mm: [25.0, 25.0, 25.0]
+  axes:
+    x: [0, 0, 1]
+    y: [0, 1, 0]
+    z: [1, 0, 0]
+
+transform_cad_to_opt:
+  matrix_4x4:
+    - [0, 0, 1, 0]
+    - [0, 1, 0, 0]
+    - [1, 0, 0, 0]
+    - [0, 0, 0, 1]
+
+beam_path:
+  entry_point_mm:  [0.0, 0.0,  0.0]
+  vertex_point_mm: [0.0, 0.0,  0.0]
+  exit_point_mm:   [25.0, 0.0, 0.0]
